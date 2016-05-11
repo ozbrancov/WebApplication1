@@ -21,7 +21,7 @@
     </address>
 
     <address>
-        <strong>Support:</strong>   <a href="mailto:ozbrancov@gmail.com">ozbrancov@gmail.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:ozbrancov@gmail.com">ozbrancov@gmail.com</a>
+        <strong>Support:</strong>   <a href="mailto:test@gmail.com">test@gmail.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:test@gmail.com">test@gmail.com</a>
     </address>
 </asp:Content>

@@ -211,6 +211,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="tutorialForm.aspx" />
+    <Content Include="countries_data.xml" />
+    <Content Include="TutorialForm2.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -425,6 +427,13 @@
     </Compile>
     <Compile Include="tutorialForm.aspx.designer.cs">
       <DependentUpon>tutorialForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialForm2.aspx.cs">
+      <DependentUpon>TutorialForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TutorialForm2.aspx.designer.cs">
+      <DependentUpon>TutorialForm2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

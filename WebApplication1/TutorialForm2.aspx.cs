@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
 
 //This takes over from tutorial video 21
 namespace WebApplication1
@@ -14,7 +17,18 @@ namespace WebApplication1
         {
             if (!IsPostBack)
             {
-                DropDownList1.SelectedValue = "1";
+                //DropDownList1.SelectedValue = "1";
+                //string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+
+                //using (SqlConnection con = new SqlConnection(CS))
+                //{
+                //    SqlCommand cmd = new SqlCommand("SELECT TOP 10 [UserName] FROM [UserStore_CBIA].[dbo].[UserFP]", con);
+                //    con.Open();
+                //    DropDownListSQL.DataSource = cmd.ExecuteReader();
+                //    DropDownListSQL.DataTextField = "UserName";
+                //    DropDownListSQL.DataValueField = "UserName";
+                //    DropDownListSQL.DataBind();
+                //}
             }
         }
 
@@ -29,6 +43,30 @@ namespace WebApplication1
                 Response.Write(DropDownList1.SelectedItem.Text + "<br/>");
                 Response.Write(DropDownList1.SelectedItem.Value + "<br/>");
                 Response.Write(DropDownList1.SelectedIndex + "<br/>");
+            }
+        }
+
+        protected void Button2_click(object sender, EventArgs e)
+        {
+            foreach(ListItem li in CheckBoxList1.Items)
+            {
+                li.Selected = true;
+            }
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            foreach(ListItem li in CheckBoxList1.Items)
+            {
+                li.Selected = false;
+            }
+        }
+
+        protected void SelectAll_Click(object sender, EventArgs e)
+        {
+            foreach (ListItem li in CheckBoxList1.Items)
+            {
+                li.Selected = true;
             }
         }
     }

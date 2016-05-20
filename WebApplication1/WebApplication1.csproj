@@ -198,6 +198,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="ConfirmMultiview.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -213,6 +214,8 @@
     <Content Include="tutorialForm.aspx" />
     <Content Include="countries_data.xml" />
     <Content Include="TutorialForm2.aspx" />
+    <Content Include="TutorialForm3.aspx" />
+    <Content Include="AdsData.xml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -380,6 +383,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="ConfirmMultiview.aspx.cs">
+      <DependentUpon>ConfirmMultiview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmMultiview.aspx.designer.cs">
+      <DependentUpon>ConfirmMultiview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -435,9 +445,18 @@
     <Compile Include="TutorialForm2.aspx.designer.cs">
       <DependentUpon>TutorialForm2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TutorialForm3.aspx.cs">
+      <DependentUpon>TutorialForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TutorialForm3.aspx.designer.cs">
+      <DependentUpon>TutorialForm3.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

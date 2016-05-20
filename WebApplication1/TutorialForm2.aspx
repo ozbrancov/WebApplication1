@@ -30,6 +30,24 @@
         <asp:Button ID="SelectAll" runat="server" Text="Select All" OnClick="SelectAll_Click"/>
         <asp:Button ID="DeselectAll" runat="server" Text="DeSelect All" OnClick="Button3_Click" />
     <br /><br />
+        <asp:CheckBoxList ID="CheckBoxList2" runat="server" AutoPostBack="True" RepeatDirection="Horizontal" OnSelectedIndexChanged="CheckBoxList2_SelectedIndexChanged">
+            <asp:ListItem Text="Diploma" Value="1"></asp:ListItem>
+            <asp:ListItem Text="Graduate" Value="2"></asp:ListItem>
+            <asp:ListItem Text="Post Graduate" Value="3"></asp:ListItem>
+            <asp:ListItem Text="Doctorate" Value="4"></asp:ListItem>
+        </asp:CheckBoxList>
+        <asp:ListBox ID="ListBox1" runat="server" Rows="4" SelectionMode="Multiple" Height="98px" Width="200px">
+
+        </asp:ListBox>
+        <br /><br />
+        <asp:Label ID="Label1" runat="server" Font-Bold="true" Text=""></asp:Label>
+        <br /><br />
+        
+
+        <asp:FileUpload ID="FileUpload1" runat="server" />
+        <asp:Button ID="BTNUpload" runat="server" Text="Upload File" OnClick="BTNUpload_Click" />
+        <br /><br />
+        <asp:Label ID="LblMesssage" runat="server" Font-Bold="true"></asp:Label>
 
     </div>
     </form>

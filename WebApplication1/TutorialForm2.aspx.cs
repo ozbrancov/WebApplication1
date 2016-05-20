@@ -69,5 +69,59 @@ namespace WebApplication1
                 li.Selected = true;
             }
         }
+
+        protected void CheckBoxList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox1.Items.Clear();
+            foreach(ListItem li in CheckBoxList2.Items)
+            {
+                if (li.Selected)
+                {
+                    ListBox1.Items.Add(li.Text);
+                }
+            }
+            if(CheckBoxList2.SelectedIndex == -1)
+            {
+                Label1.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                Label1.ForeColor = System.Drawing.Color.Black;
+            }
+            Label1.Text = ListBox1.Items.Count.ToString() + " Items(s) selected";
+        }
+
+        protected void BTNUpload_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+                if(fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    LblMesssage.Text = "Please select a .doc or a .docx file to upload";
+                    LblMesssage.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        LblMesssage.Text = "Maximum size is 2MB for Uploads";
+                        LblMesssage.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                        LblMesssage.Text = "File Uploaded";
+                        LblMesssage.ForeColor = System.Drawing.Color.Green;
+                    }
+                }
+            }
+            else
+            {
+                LblMesssage.Text = "Please Select File to upload";
+                LblMesssage.ForeColor = System.Drawing.Color.Red;
+            }
+        }
     }
 }

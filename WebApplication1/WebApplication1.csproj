@@ -211,6 +211,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="angular_page_1.html" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\Script.js" />
     <Content Include="tutorialForm.aspx" />
     <Content Include="countries_data.xml" />
     <Content Include="TutorialForm2.aspx" />

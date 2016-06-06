@@ -105,7 +105,7 @@ namespace WebApplication1
 
         protected void SubmitBtn(object sender, EventArgs e)
         {
-            Response.Redirect("~/ConfirmMultiview.aspx");
+            Response.Redirect("~/angular_page_1.html");
         }
     }
 }

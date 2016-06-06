@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html ng-app="myModule"> <!--Bootstraps angular app using myModule module-->
+<head>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/Script.js"></script>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div ng-controller="myController">
+        {{ "Controller's message is"+ message }} 
+        <!--Scope of the controller directive is only within the html element, can be moved up to become more available like in body-->
+    </div>
+    <div>
+        10+20 = {{10 + 20}}
+    </div>
+    <div>js object = {{ {name: 'David', age:'30'}.name }}</div>
+</body>
+</html>

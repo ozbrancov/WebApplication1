@@ -1,0 +1,19 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="employee in employees">
+            <td>{{employee.name | uppercase }}</td>
+            <td>{{employee.dateOfBirth | date: "dd/MM/yyyy"}}</td>
+            <td>{{employee.gender | lowercase }}</td>
+            <td>{{employee.salary | number: 2 }}</td>
+        </tr>
+        <!--Ng include used when you want to re-use a view in multiple pages-->
+    </tbody>
+</table>

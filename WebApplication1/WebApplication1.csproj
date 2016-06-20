@@ -198,11 +198,14 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="angular_page_2.html" />
+    <Content Include="angular_page_3.html" />
     <Content Include="ConfirmMultiview.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="EmployeeTable.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -213,7 +216,13 @@
     </Content>
     <Content Include="angular_page_1.html" />
     <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\filters.js" />
     <Content Include="Scripts\Script.js" />
+    <Content Include="Scripts\Script2.js" />
+    <Content Include="Scripts\Script3.js" />
+    <Content Include="Scripts\stringService.js" />
+    <Content Include="Scripts\Style.css" />
+    <Content Include="sucker.html" />
     <Content Include="tutorialForm.aspx" />
     <Content Include="countries_data.xml" />
     <Content Include="TutorialForm2.aspx" />

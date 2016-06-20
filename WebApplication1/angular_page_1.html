@@ -3,17 +3,103 @@
 <head>
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/Script.js"></script>
+    <link href="Scripts/Style.css" rel="stylesheet" />
     <title></title>
 	<meta charset="utf-8" />
 </head>
 <body>
     <div ng-controller="myController">
-        {{ "Controller's message is"+ message }} 
         <!--Scope of the controller directive is only within the html element, can be moved up to become more available like in body-->
+        <!--<div>10+20 = {{10 + 20}}</div>
+
+        <div>js object = {{ {name: 'David', age:'30'}.name }}</div>
+
+        <div>First Name: {{employee.firstName}}</div>
+        <div>Last Name: {{employee.lastName}}</div>
+        <div>First Name: {{employee.Gender}}</div>
+
+        <input type="text" ng-model="message"/>
+        <br />-->
+        <!--{{message}}--> <!--if you declare a new ng-model an use binding expression below, it will display in the html in real time
+                        as you're typing it into the text input-->
+
+        <!--<table>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" ng-model="employee.firstName" /></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" ng-model="employee.lastName" /></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="text" ng-model="employee.Gender" /></td>
+            </tr>
+        </table>-->
+        <br /><br />
+        <div>
+            <img ng-src="{{youtube.logo}}" style="height:100px; width:100px" />
+        </div>
+        <br /><br />
+            <ul>
+                <li ng-repeat="country in countries">
+                    {{country.name}}
+                    <ul>
+                        <li ng-repeat="city in country.cities">
+                            {{city.name}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
     </div>
-    <div>
-        10+20 = {{10 + 20}}
+    <br /><br />
+    <div ng-controller="myController">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Likes</th>
+                    <th>Dislikes</th>
+                    <th>Likes/Dislikes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="technology in technologies">
+                    <td>{{technology.name}}</td>
+                    <td>{{technology.likes}}</td>
+                    <td>{{technology.dislikes}}</td>
+                    <td colspan="2">
+                        <input type="button" value="Like" ng-click="incrementLikes(technology)" />
+                        <input type="button" value="Dislike" ng-click="incrementDislikes(technology)" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br /><br />
+        Rows to Display: <input type="number" step="1" min="0" max="5" ng-model="rowlimit"/>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Salary (number)</th>
+                    <th>Salary (currency)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees | limitTo:rowlimit">
+                    <td>{{employee.name | uppercase }}</td>
+                    <td>{{employee.dateOfBirth | date: "dd/MM/yyyy"}}</td>
+                    <td>{{employee.gender | lowercase }}</td>
+                    <td>{{employee.salary | number: 2 }}</td>
+                    <td>{{employee.salary | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div>js object = {{ {name: 'David', age:'30'}.name }}</div>
+    <br /><br />
 </body>
 </html>

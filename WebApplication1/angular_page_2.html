@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html ng-app="myModule2">
+<head>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/Script2.js"></script>
+    <link href="Scripts/Style.css" rel="stylesheet" />
+    <script src="Scripts/filters.js"></script>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div ng-controller="myController">
+        <!--Order By : <select ng-model="sortColumn">
+                        <option value="name">Name Asc</option>
+                        <option value="gender">Gender Asc</option>
+                        <option value="dateOfBirth">DOB Asc</option>
+                        <option value="-salary">Salary Desc</option>
+                    </select>-->
+        <table>
+            <thead>
+                <tr>
+                    <th ng-click="sortData('name')">Name <div ng-class="getSortClass('name')"></div></th>
+                    <th ng-click="sortData('dateOfBirth')">Date of Birth <div ng-class="getSortClass('dateOfBirth')"></div></th>
+                    <th ng-click="sortData('gender')">Gender<div ng-class="getSortClass('gender')"></div></th>
+                    <th ng-click="sortData('salary')">Salary (number)<div ng-class="getSortClass('salary')"></div></th>
+                    <!--<th ng-click="sortData('salary')">Salary (currency)<div ng-class="getSortClass('salary')"></div></th>-->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- {{order_by_expression | orderBy : expression: reverse}}  or | orderBy:'+salary'-->
+                <tr ng-repeat="employee in employees | orderBy: sortColumn:reverseSort"> 
+                    <td>{{employee.name | uppercase }}</td>
+                    <td>{{employee.dateOfBirth | date: "dd/MM/yyyy"}}</td>
+                    <td>{{employee.gender | lowercase }}</td>
+                    <td>{{employee.salary | number: 2 }}</td>
+                    <!--<td>{{employee.salary | currency}}</td>-->
+                </tr>
+            </tbody>
+        </table>
+        <br /><br />
+        Search : <input type="text" placeholder="Search Employees" ng-model="searchText" /> <!--searchText.gender to filter across one column only-->
+        <br />
+        <input type="text" placeholder="Search Name" ng-model="searchText.name" /> <input type="text" placeholder="Search Salary" ng-model="searchText.salary" /> 
+        <input type="checkbox" ng-model="exactMatch" /> Exact Match
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date Of Birth</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees | filter: searchText:exactMatch"> <!--Because exactMatch is a boolean, turned on if true-->
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.dateOfBirth}}</td>
+                    <td>{{employee.gender}}</td>
+                    <td>{{employee.salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br /><br />
+        Custom filter logic below
+        <br />
+        <input type="checkbox" ng-model="hideDob"/> Hide Date of Birth <!-- hideDob is not on scope, will be undefined -->
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th ng-hide="hideDob">Date Of Birth</th> <!-- undefined evaluates to false, so it will be displayed on page load-->
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cat in cats">
+                    <td> {{cat.name}}</td>
+                    <td ng-hide="hideDob"> {{cat.dateOfBirth | date: "dd/MM/yyyy"}}</td>
+                    <td> {{cat.gender | gender}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br /><br />
+        Below is an example of Ng-include
+        <select ng-model="employeeView">
+            <option value="EmployeeTable.html">Value</option>
+            <option value="sucker.html">Sucker</option>
+        </select>
+        <div ng-include="employeeView">
+        </div>
+    </div>
+</body>
+</html>

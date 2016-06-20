@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html ng-app="myModule3">
+<head>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/Script3.js"></script>
+    <link href="Scripts/Style.css" rel="stylesheet" />
+    <script src="Scripts/stringService.js"></script>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div ng-controller="myController">
+        <table>
+            <tr>
+                <td>Your String</td>
+                <td><input type="text" ng-model="input" /></td>
+            </tr>
+            <tr>
+                <td>Result</td>
+                <td><input type="text" ng-model="output"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="button" ng-click="transformString(input)" value="Process String"/></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

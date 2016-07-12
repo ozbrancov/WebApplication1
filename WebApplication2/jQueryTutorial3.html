@@ -70,7 +70,32 @@
             //    $('#' + helpDiv).html('')
             //})
 
+            $('#btnGetEmployee').click(function () {
+                var empId = $('#txtId').val()
+                if (empId) {
+                    $.ajax({
+                        url: 'EmployeeService.asmx/GetEmployeeById',
+                        //contentType : 'application/json;charset=utf-8',//used if Webservice returns XML and we convert to JSON
+                        //data: JSON.stringify({ employeeId: empId }),
+                        data: {employeeId: empId},
+                        method: 'post',
+                        dataType: 'json',
+                        success: function (data) {
 
+                            $('#txtName').val(data.Name);
+                            $('#txtGender').val(data.Gender);
+                            $('#txtSalary').val(data.Salary);
+                            $('#noIdProvided').attr('style', 'display:none')
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    })
+                }
+                else {
+                    $('#noIdProvided').attr('style', 'display:inline')
+                }
+            })
         });
     </script>
 </head>
@@ -124,6 +149,26 @@
             <td><div id="incomeHelpDiv"></div></td>
         </tr>
     </table>
+
+    <br /><br />
+    ID : <input id="txtId" type="text" style="width:100px" />
+    <input type="button" id="btnGetEmployee" value="Get Employee" />
+    <br /><br />
+    <table border="1" style="border-collapse:collapse">
+        <tr>
+            <td>Name</td>
+            <td><input id="txtName" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td><input id="txtGender" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Salary</td>
+            <td><input id="txtSalary" type="text" /></td>
+        </tr>
+    </table>
+    <div id="noIdProvided" style="display:none">Enter an employee id</div>
 </body>
 </html>
 

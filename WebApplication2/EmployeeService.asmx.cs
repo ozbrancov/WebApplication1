@@ -6,6 +6,7 @@ using System.Web.Services;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Web.Script.Serialization;
 
 
 namespace WebApplication2
@@ -17,7 +18,7 @@ namespace WebApplication2
     public class EmployeeService : System.Web.Services.WebService
     {
         [WebMethod]
-        public Employee GetEmployeeById(int employeeId)
+        public void GetEmployeeById(int employeeId)
         {
             Employee employee = new Employee();
 
@@ -42,8 +43,10 @@ namespace WebApplication2
                     employee.Salary = Convert.ToInt32(rdr["Salary"]);
                 }
             }
-                
-            return employee;
+
+            JavaScriptSerializer js = new JavaScriptSerializer();//instead of returning employee object as before, we are writing to response stream
+            Context.Response.Write(js.Serialize(employee));
         }
     }
 }
+

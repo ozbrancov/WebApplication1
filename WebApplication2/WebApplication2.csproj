@@ -106,6 +106,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EmployeeService.asmx" />
     <Content Include="GetHelpText.aspx" />
     <Content Include="help.html" />
     <Content Include="jQueryTutorial3.html" />
@@ -113,10 +114,13 @@
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="Web.config" />
-    <Content Include="WebService1.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeService.asmx.cs">
+      <DependentUpon>EmployeeService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GetHelpText.aspx.cs">
       <DependentUpon>GetHelpText.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -125,10 +129,6 @@
       <DependentUpon>GetHelpText.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebService1.asmx.cs">
-      <DependentUpon>WebService1.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

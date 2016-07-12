@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <meta charset="utf-8" />
+    <script>
+        $(document).ready(function () {
+            $('ul').on('click', 'li', function () {//li is the selector parameter, handlere is from parent ul. have only 1 handler in memory
+                $(this).fadeOut(500)//this function is an example of event delegation
+            })
+            $('#btnAdd').on('click', function () {
+                $('ul').append('<li>New List Item</li>')
+            })
+
+
+            var previousPercentage = 0;
+            var currentPercentage = 0;
+            $('#progress').click(function () {
+                previousPercentage = currentPercentage;
+                currentPercentage = $('#ddlPercentage').val()
+                animateProgressBar(previousPercentage, currentPercentage);
+            })
+            function animateProgressBar(previousPercentage, currentPercentage) {
+                $('#inner').animate(
+                    {
+                        'width': (currentPercentage * 500) / 100
+                    }, 1000);
+
+                if (previousPercentage > currentPercentage) {
+                    currentPercentage -= 1;
+                }
+
+                $({ counter: previousPercentage }).animate(
+                    { counter: currentPercentage },
+                    {
+                    duration: 1000, step: function () {
+                        $('#inner').text(Math.ceil(this.counter) + ' %');
+                    }
+                })
+            }
+
+
+            $('#checkPassword').click(function () {
+                $('#password').attr('type', $(this).is(':checked') ? 'text' : 'password');
+            })
+
+
+            //var textBoxes = $('input[type="text"]');
+            //textBoxes.focus(function () {
+            //    var helpDiv = $(this).attr('id') + 'HelpDiv';
+            //    $('#' + helpDiv).load('help.html #'+helpDiv)//load what's in help.html into that div. helpDiv already has the same id as in help.html
+            //})
+
+            //textBoxes.blur(function () {
+            //    var helpDiv = $(this).attr('id') + 'HelpDiv';
+            //    $('#' + helpDiv).html('')
+            //})
+
+            //below using aspx and SQL
+            var textBoxes = $('input[type="text"]');
+            textBoxes.focus(function () {
+                var helpDiv = $(this).attr('id');
+                $('#' + helpDiv + 'HelpDiv').load('GetHelpText.aspx', {HelpTextKey: helpDiv});// use the data parameter to pass the data to the request
+            })
+
+            textBoxes.blur(function () {
+                var helpDiv = $(this).attr('id') + 'HelpDiv';
+                $('#' + helpDiv).html('')
+            })
+
+
+        });
+    </script>
+</head>
+<body>
+    <input id="btnAdd" type="button" value="Add a new list item"/>
+    <ul>
+        <li>List item</li>
+        <li>List item</li>
+    </ul>
+    <br /><br/>
+    Select Percentage:
+    <select id="ddlPercentage">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+    </select>
+    <input type="button" value="Progress" id="progress" />
+    <br /><br/>
+    <div id="outer" style="background-color:#EEEEEE; height:20px; width:500px; padding:5px" >
+        <div id="inner" style="background-color:red; height:19px; width:0px; color:white; text-align:center"></div>
+    </div>
+
+    <br /><br />
+    Password:
+    <input type="password" id="password" />
+    <input type="checkbox" id="checkPassword" /> Show Password
+
+    <br /><br />
+
+    Ajax Below
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" id="firstName"/></td>
+            <td><div id="firstNameHelpDiv"></div></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input id="lastName" type="text" /></td>
+            <td><div id="lastNameHelpDiv"></div></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input id="email" type="text" /></td>
+            <td><div id="emailHelpDiv"></div></td>
+        </tr>
+        <tr>
+            <td>Income</td>
+            <td><input id="income" type="text" /></td>
+            <td><div id="incomeHelpDiv"></div></td>
+        </tr>
+    </table>
+</body>
+</html>
+

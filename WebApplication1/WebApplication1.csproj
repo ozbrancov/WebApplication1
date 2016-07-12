@@ -215,19 +215,35 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="angular_page_1.html" />
+    <Content Include="GetHelpText.aspx" />
+    <Content Include="help.html" />
+    <Content Include="index.html" />
+    <Content Include="jQueryTutorial.html" />
+    <Content Include="jQuerytutorial2.html" />
+    <Content Include="jQueryTutorial3.html" />
+    <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\filters.js" />
+    <Content Include="Scripts\jQueryTutorial.js" />
+    <Content Include="Scripts\RoutingAppScript.js" />
     <Content Include="Scripts\Script.js" />
     <Content Include="Scripts\Script2.js" />
     <Content Include="Scripts\Script3.js" />
     <Content Include="Scripts\stringService.js" />
     <Content Include="Scripts\Style.css" />
+    <Content Include="Scripts\WebAppStyle.css" />
+    <Content Include="StudentService.asmx" />
     <Content Include="sucker.html" />
+    <Content Include="Templates\courses.html" />
+    <Content Include="Templates\home.html" />
+    <Content Include="Templates\students.html" />
     <Content Include="tutorialForm.aspx" />
     <Content Include="countries_data.xml" />
     <Content Include="TutorialForm2.aspx" />
     <Content Include="TutorialForm3.aspx" />
     <Content Include="AdsData.xml" />
+    <Content Include="TutorialDeserialize.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -265,7 +281,9 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
@@ -416,6 +434,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GetHelpText.aspx.cs">
+      <DependentUpon>GetHelpText.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetHelpText.aspx.designer.cs">
+      <DependentUpon>GetHelpText.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -436,6 +461,11 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="students.cs" />
+    <Compile Include="StudentService.asmx.cs">
+      <DependentUpon>StudentService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -463,6 +493,13 @@
     </Compile>
     <Compile Include="TutorialForm3.aspx.designer.cs">
       <DependentUpon>TutorialForm3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialDeserialize.aspx.cs">
+      <DependentUpon>TutorialDeserialize.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TutorialDeserialize.aspx.designer.cs">
+      <DependentUpon>TutorialDeserialize.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

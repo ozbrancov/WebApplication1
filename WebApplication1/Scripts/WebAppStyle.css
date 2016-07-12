@@ -1,0 +1,35 @@
+﻿.header {
+    width:800px;
+    height:80px;
+    text-align:center;
+    background-color:#ff6a00;
+}
+
+.footer {
+    background: #ff6a00;
+    width: 775px;
+    height: 20px;
+    border-width: 2px;
+    padding: 15px;
+    position: fixed;
+    bottom: initial;
+    overflow:hidden;
+    clear: both;
+}
+
+.leftMenu{
+    height:500px;
+    background-color: #ff6a00;
+    width: 150px;
+}
+
+.mainContent{
+    height:500px;
+    background-color: #808080;
+    width: 650px;
+}
+
+a{
+    display:block;
+    padding:5px;
+}

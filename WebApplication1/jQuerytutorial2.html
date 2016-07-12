@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <meta charset="utf-8" />
+    <script>
+        $(document).ready(function () {
+            //var result = []; //each returns the orginal arrary, a non mutable iterator
+            //$('li').each(function (index, element) {
+            //    result.push($(element).text());
+            //})
+            //alert(result);
+
+            //var usingMap = $('li').map(function (index, element) {//map returns a new arrary
+            //    return ($(element).text());
+            //}).get(); //in order to convert into an array
+            //$('#resultDiv').html(usingMap)
+
+            //var result = ''
+            //$('.inputRequired').change(function () {
+            //    if(result=='')
+            //        result = $(this).val();
+            //    else {
+            //        result += ', ' + $(this).val();
+            //    }
+            //    $('#divResult').html(result)
+            //})
+
+            //$('somebtn').click(function (event) {//if passed in this function it's a Jquery event object
+            //    someFunction(event)//if not passed into line above, it's a raw JS event object. Will work on new browsers if it's not passed into the function
+            //})
+
+            //below is raw JS!!!!!
+            //function whichMouseButtonClicked(event) {//passed raw JS event object
+            //    var whichButton;
+            //    if (event.which) {// modern browsers
+            //        switch (event.which) {
+            //            case 1: whichButton = "Left button"; break;
+            //            case 2: whichButton = "middle button"; break;
+            //            case 3: whichButton = "right button"; break;
+            //            default: whichButton = "invalid button clicked"; break;
+            //        }
+            //    }
+            //    else {
+            //        switch (event.button) {//IE older support event.button
+            //            case 1: whichButton = "left"; break;
+            //            case 4: whichButton = "middle"; break;
+            //            case 2: whichButton = "right"; break;
+            //            default: whichButton = "invalid btn"; break;
+            //        }
+            //    }
+            //}
+            //WithJquery below
+            //$('#btn').mouseup(function (event) {//jquery event object
+            //    var whichButton = '';
+            //    switch (event.which) {
+            //        case 1: whichButton = "Left button"; break;
+            //        case 2: whichButton = "middle button"; break;
+            //        case 3: whichButton = "right button"; break;
+            //        default: whichButton = "invalid button clicked"; break;
+            //    }   
+            //})
+
+
+            $('img[src="/Images/help.png"]').mouseover(function () {
+                var helpIconId = $(this).attr('id');
+                var divId = helpIconId.replace('img', 'div');
+                $('#'+ divId).fadeIn(500);
+            }).mouseout(function () {
+                var helpIconId = $(this).attr('id');
+                var divId = helpIconId.replace('img', 'div');
+                $('#' + divId).fadeOut(500);
+            })
+        })
+    </script>
+</head>
+<body>
+    <!--<ul>
+        <li>US</li>
+        <li>India</li>
+        <li>UK</li>
+        <li>Australia</li>
+        <li>Canada</li>
+    </ul>-->
+    <!--<div id="resultDiv"></div>-->
+    <br/><br/>
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td style="vertical-align:middle">
+                <input id="txtFirstName" type="text" class="inputRequired" />
+
+            </td>
+            <td><img id="imgFirstNameHelp" src="/Images/help.png" height="20" width="20" /></td>
+            <td>
+                <div id="divFirstNameHelp" style="display:none">
+                    First Name as shown in passport
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>
+                <input id="txtLastName" type="text" class="inputRequired" />
+            </td>
+            <td><img id="imgLastNameHelp" src="/Images/help.png" height="20" width="20"/></td>
+            <td>
+                <div id="divLastNameHelp" style="display:none">
+                    Last Name as shown in passport
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>
+                <select id="ddlCity" class="inputRequired">
+                    <option value="Select">Select</option>
+                    <option value="New York">New York</option>
+                    <option value="London">London</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Sydney">Sydney</option>
+                </select>
+            </td>
+            <td><img id="imgCityHelp" src="/Images/help.png" height="20" width="20" /></td>
+            <td>
+                <div id="divCityHelp" style="display:none">
+                    Your residence city
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Favourite Color</td>
+            <td>
+                <input id="radioRed" name="color" type="radio" value="Red"
+                       class="inputRequired" />Red
+                <input id="radioGreen" name="color" type="radio" value="Green"
+                       class="inputRequired" />Green<br />
+                <input id="radioBlue" name="color" type="radio" value="Blue"
+                       class="inputRequired" />Blue
+            </td>
+            <td><img id="imgColorHelp" src="/Images/help.png" height="20" width="20" /></td>
+            <td>
+                <div id="divColorHelp" style="display:none">
+                    Your Favourite Color
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Contact Method</td>
+            <td>
+                <input id="chkBoxEmail" type="checkbox" value="Email"
+                       class="inputRequired" />Email
+                <input id="chkBoxPhone" type="checkbox" value="Phone"
+                       class="inputRequired" />Phone<br />
+                <input id="chkBoxSocialMedia" type="checkbox" value="Social Media"
+                       class="inputRequired" />Social Media
+            </td>
+            <td><img id="imgContactMethodHelp" src="/Images/help.png" height="20" width="20" /></td>
+            <td>
+                <div id="divContactMethodHelp" style="display:none">
+                    How should we contact you
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Comments
+            </td>
+            <td>
+                <textarea id="txtComments" class="inputRequired"></textarea>
+            </td>
+            <td><img id="imgCommentsHelp" src="/Images/help.png" height="20" width="20" /></td>
+            <td>
+                <div id="divCommentsHelp" style="display:none">
+                    Your comments please
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="btnSubmit" type="button" value="Submit" />
+            </td>
+            <td>
+                <div id="divResult"></div>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

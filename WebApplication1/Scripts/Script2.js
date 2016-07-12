@@ -2,6 +2,13 @@
 
 var myApp = angular.module("myModule2", []);
 
+myApp.controller("scrollController", function ($scope, $location, $anchorScroll) {
+    $scope.scrollTo = function (scrollLocation) {
+        $location.hash(scrollLocation); //hash appends to the url
+        $anchorScroll(); //reads what you have in the url and scroll to that element
+    }
+});
+
 
 myApp.controller("myController", function ($scope) {
     var employees = [

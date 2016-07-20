@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <link href="jquery-ui.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'MenuHandler.ashx',
+                method: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    buildMenu($('#menu'), data);
+                    $('#menu').menu();
+                }
+            })
+        })
+
+        function buildMenu(parent, items) {
+            $.each(items, function () {
+                var li = $('<li>' + this.MenuText + '</li>');
+                if (!this.Active) {
+                    li.addClass('ui-state-disabled');
+                }
+                li.appendTo(parent)
+            })
+            if (this.List && this.List.length > 0) {
+                var ul = $('<ul></ul>');
+                ul.appendTo(li);
+                buildMenu(ul, this.List);
+            }
+        }
+    </script>
+
+</head>
+<body>
+    Table here
+    <div style="width:150px">
+        <ul id="menu"></ul>
+    </div>
+</body>
+</html>

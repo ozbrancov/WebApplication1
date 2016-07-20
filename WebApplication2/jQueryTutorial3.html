@@ -3,6 +3,8 @@
 <head>
     <title></title>
     <script src="scripts/jquery-1.10.2.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <link href="jquery-ui-1.10.4.custom.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <script>
         $(document).ready(function () {
@@ -12,7 +14,6 @@
             $('#btnAdd').on('click', function () {
                 $('ul').append('<li>New List Item</li>')
             })
-
 
             var previousPercentage = 0;
             var currentPercentage = 0;
@@ -70,6 +71,28 @@
             //    $('#' + helpDiv).html('')
             //})
 
+
+            $('#btnAddEmployee').click(function () {
+                var employee = {};
+                employee.Name = $('#txtName').val();
+                employee.Gender = $('#txtGender').val();
+                employee.salary = $('#txtSalary').val();
+
+                $.ajax({
+                    url: 'EmployeeService.asmx/AddEmployee',
+                    method: 'post',
+                    data: '{emp: ' + JSON.stringify(employee) + '}',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function () {
+                        $('#EmployeeAdded').attr('style', 'display:display')
+                    },
+                    error: function (err) {
+                        console.log(err)
+                        $('#EmployeeNotAdded').attr('style', 'display:display')
+                    }
+                })
+            })
+
             $('#btnGetEmployee').click(function () {
                 var empId = $('#txtId').val()
                 if (empId) {
@@ -79,9 +102,8 @@
                         //data: JSON.stringify({ employeeId: empId }),
                         data: {employeeId: empId},
                         method: 'post',
-                        dataType: 'json',
+                        dataType: 'json',//what comes back
                         success: function (data) {
-
                             $('#txtName').val(data.Name);
                             $('#txtGender').val(data.Gender);
                             $('#txtSalary').val(data.Salary);
@@ -94,6 +116,20 @@
                 }
                 else {
                     $('#noIdProvided').attr('style', 'display:inline')
+                }
+            })
+
+            $.ajax({
+                url: 'CountryService.asmx/GetCountries',
+                method: 'post',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    var htmlString = '';
+                    $(data.d).each(function (index, country) {
+                        htmlString += '<h3>' + country.Name + '</h3><div>' + country.CountryDescription + '</div>';
+                    })
+                    $('#accordion').html(htmlString).accordion();
                 }
             })
         });
@@ -169,6 +205,15 @@
         </tr>
     </table>
     <div id="noIdProvided" style="display:none">Enter an employee id</div>
+    <br /><br/>
+
+    <input type="button" id="btnAddEmployee" value="Add Employee" />
+    <br/><br />
+    <div id="EmployeeAdded" style="display:none">Employee Added</div>
+    <div id="EmployeeNotAdded" style="display:none">Employee Not Added</div>
+    <br /><br />
+    <div id="accordion" style="width: 400px">
+    </div>
 </body>
 </html>
 

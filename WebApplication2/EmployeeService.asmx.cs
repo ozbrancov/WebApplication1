@@ -47,6 +47,39 @@ namespace WebApplication2
             JavaScriptSerializer js = new JavaScriptSerializer();//instead of returning employee object as before, we are writing to response stream
             Context.Response.Write(js.Serialize(employee));
         }
+
+        [WebMethod]
+        public void AddEmployee(Employee emp)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["DBCS2"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spInsertEmployee", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter()
+                {
+                    ParameterName = "@Name",
+                    Value = emp.Name
+                });
+
+                cmd.Parameters.Add(new SqlParameter()
+                {
+                    ParameterName = "@Gender",
+                    Value = emp.Gender
+                });
+
+                cmd.Parameters.Add(new SqlParameter()
+                {
+                    ParameterName = "@Salary",
+                    Value = emp.Salary
+                });
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        
     }
 }
 

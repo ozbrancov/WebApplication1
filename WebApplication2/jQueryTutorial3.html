@@ -2,12 +2,14 @@
 <html>
 <head>
     <title></title>
-    <script src="scripts/jquery-1.10.2.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-    <link href="jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <link href="jquery-ui.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <script>
         $(document).ready(function () {
+            $('#selectMenu').selectmenu()
+
             $('ul').on('click', 'li', function () {//li is the selector parameter, handlere is from parent ul. have only 1 handler in memory
                 $(this).fadeOut(500)//this function is an example of event delegation
             })
@@ -214,6 +216,19 @@
     <br /><br />
     <div id="accordion" style="width: 400px">
     </div>
+
+
+
+    <br /><br />
+    <select id="selectMenu" style="width: 200px">
+        <option value="1">USA</option>
+        <option value="2" selected="selected">India</option>
+        <option value="3">UK</option>
+        <option value="4">Australia</option>
+        <option value="5">Canada</option>
+    </select>
 </body>
 </html>
+
+
 
